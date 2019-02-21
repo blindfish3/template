@@ -2,8 +2,17 @@ import svelte from 'rollup-plugin-svelte';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
+import browsersync from "rollup-plugin-browsersync";
+const historyApiFallback = require('connect-history-api-fallback');
+// --------------------------
 
 const production = !process.env.ROLLUP_WATCH;
+const OUTPUT_FOLDER = 'public';
+
+function outputTo(path) {
+  return(`${OUTPUT_FOLDER}/${path}`);
+}
+// --------------------------
 
 export default {
 	input: 'src/main.js',
@@ -11,7 +20,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/bundle.js'
+		file: outputTo('bundle.js')
 	},
 	plugins: [
 		svelte({
@@ -24,10 +33,18 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
 			css: css => {
-				css.write('public/bundle.css');
+				css.write(outputTo('bundle.css'));
 			}
 		}),
-
+		browsersync({
+      server: {
+        baseDir: OUTPUT_FOLDER,
+        middleware: [ historyApiFallback() ],
+      },
+      files: outputTo("**.*"),
+      open: false,
+      reloadOnRestart: false
+    }),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration —
