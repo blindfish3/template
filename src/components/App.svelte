@@ -2,6 +2,6 @@
 
 <style>
 	h1 {
-		color: purple;
+		color: #f90;
 	}
 </style>

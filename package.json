@@ -10,6 +10,7 @@
     "rollup-plugin-browsersync": "^0.2.6",
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sass": "^1.1.0",
     "rollup-plugin-svelte": "^4.4.0",
     "rollup-plugin-terser": "^3.0.0",
     "svelte": "^2.6.0"
@@ -17,8 +18,7 @@
   "scripts": {
     "clean": "rimraf public/",
     "copy:index": "copyfiles -u 1 src/index.html public",
-    "copy:css": "copyfiles -u 1 src/global.css public",
-    "init": "run-p clean && run-p copy:index copy:css",
+    "init": "run-p clean && run-p copy:index",
     "build": "rollup -c",
     "autobuild": "rollup -c -w",
     "dev": "run-p init && run-p autobuild"

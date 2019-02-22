@@ -1,6 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import sass from 'rollup-plugin-sass';
 import { terser } from 'rollup-plugin-terser';
 import browsersync from "rollup-plugin-browsersync";
 const historyApiFallback = require('connect-history-api-fallback');
@@ -23,6 +24,9 @@ export default {
 		file: outputTo('bundle.js')
 	},
 	plugins: [
+    sass({
+      output: outputTo('global.css'),
+    }),
 		svelte({
 			// opt in to v3 behaviour today
 			skipIntroByDefault: true,
