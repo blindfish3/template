@@ -1,7 +1,6 @@
-Updates sveltejs/template based on my prejudices and preferences.
+Updates sveltejs/template based on my prejudices and preferences...
 
----
-Original readme content below
+Original readme starts below.
 ---
 
 *Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*

@@ -17,6 +17,7 @@
   },
   "scripts": {
     "clean": "rimraf public/",
+    "copy:assets": "copyfiles -u 1 src/assets/* public",
     "copy:index": "copyfiles -u 1 src/index.html public",
     "init": "run-p clean && run-p copy:index",
     "build": "rollup -c",
