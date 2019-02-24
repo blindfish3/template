@@ -8,7 +8,6 @@
   .clock {
     background: #eee;
     border: solid 1px #ccc;
-    padding: 5px;
     position: relative;
     text-align: center;
   }
@@ -18,6 +17,7 @@
   }
   button {
     font-size: 12px;
+    padding: 5px 20px;
   }
 </style>
 

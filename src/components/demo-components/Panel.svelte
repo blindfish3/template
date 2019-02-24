@@ -1,41 +1,36 @@
 <div class="wrapper">
-  <slot/>
+  <div class="label">{label}</div>
+  <span class="content"><slot/></span>
   <span class="clock">
-    <button type="button" on:click="setClockVisible(true)" disabled={clockIsVisible}>show</button>
-    <button type="button" on:click="setClockVisible(false)" disabled={!clockIsVisible}>hide</button>
+    <Button on:click="setClockVisible(true)" disabled={clockIsVisible}>create</Button>
+    <Button on:click="setClockVisible(false)" disabled={!clockIsVisible}>destroy</Button>
     {#if clockIsVisible }
       <Clock />
     {/if}
   </span>
-  <div class="label">{label}</div>
 </div>
 
 
 <style>
   .wrapper {
-    position: relative;
-    padding: 3rem 2rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem 3rem;
     border: solid 1px #ccc;
     color: black;
     max-width: 90%;
   }
 
   .label {
+    flex-basis: 100%;
     font-weight: bold;
-    position: absolute;
-    top: 5px;
-    left: 10px;
-  }
-
-  .clock {
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin-bottom: 1rem;
   }
 </style>
 
 <script>
-  
+
 	export default {
 		// equivalent to props; except default is set explicitly
 		data () {
@@ -53,6 +48,7 @@
     },
 		// import additional components here:
 		components: {
+      Button: './Button.svelte',
       Clock: './Clock.svelte',
 		}
 	}
